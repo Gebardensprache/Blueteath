@@ -1,3 +1,5 @@
 {
+  "itemGroup.blueteath": "Blueteath",
+  "item.blueteath.logo": "Blueteath Logo",
   "blueteath.message.disconnected": "Blueteath: Connection lost"
 }

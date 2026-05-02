@@ -10,8 +10,8 @@ import java.util.function.Supplier;
 
 public class BTAttachments {
 
-    private static final DeferredRegister<AttachmentType<?>> ATTACHMENTS
-            = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Blueteath.MOD_ID);
+    private static final DeferredRegister<AttachmentType<?>> ATTACHMENTS =
+            DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Blueteath.MOD_ID);
 
     public static final Supplier<AttachmentType<BlueteathHandler>> BLUETEATH_HANDLER = ATTACHMENTS.register(
             "blueteath_handler",

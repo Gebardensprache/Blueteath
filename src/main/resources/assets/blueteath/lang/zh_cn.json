@@ -1,3 +1,5 @@
 {
+  "itemGroup.blueteath": "蓝芽",
+  "item.blueteath.logo": "蓝芽(Logo)",
   "blueteath.message.disconnected": "蓝芽: 连接已中断"
 }
