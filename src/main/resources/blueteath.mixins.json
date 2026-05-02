@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "band.kessoku.blueteath.mixins",
+  "compatibilityLevel": "JAVA_25",
+  "minVersion": "0.8",
+  "mixins": [],
+  "client": [
+    "minecraft.MinecraftMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

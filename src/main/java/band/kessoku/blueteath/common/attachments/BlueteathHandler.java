@@ -47,6 +47,10 @@ public class BlueteathHandler implements ValueIOSerializable {
         connecting = null;
     }
 
+    public boolean isConnecting(UUID uuid) {
+        return connecting != null && connecting.equals(uuid);
+    }
+
     public @Nullable Player getConnectedPlayer(Level world) {
         if (connecting == null) return null;
         return world.getPlayerByUUID(connecting);
