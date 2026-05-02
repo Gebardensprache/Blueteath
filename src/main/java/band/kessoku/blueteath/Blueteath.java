@@ -1,5 +1,6 @@
 package band.kessoku.blueteath;
 
+import band.kessoku.blueteath.common.attachments.BTAttachments;
 import net.minecraft.resources.Identifier;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -14,7 +15,7 @@ public class Blueteath {
     public static final String MOD_VERSION = "1.0.0-teacon";
 
     public Blueteath(IEventBus bus, ModContainer modContainer, Dist dist) {
-
+        BTAttachments.register(bus);
     }
 
     public static Identifier asId(String path) {
