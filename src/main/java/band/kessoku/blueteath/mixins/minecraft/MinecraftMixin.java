@@ -25,7 +25,7 @@ public abstract class MinecraftMixin {
     )
     private boolean blueteach$glowingConnectingPlayer(boolean original, @Local(argsOnly = true) Entity entity) {
         if (entity instanceof Player target) {
-            return original || PlayerUtil.isConnecting(player, target);
+            return original || (PlayerUtil.isConnecting(player, target) && PlayerUtil.hasGlasses(player));
         }
         return original;
     }

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "blueteath:copper_blueteath_transceiver",
+    "blueteath:iron_blueteath_transceiver",
+    "blueteath:golden_blueteath_transceiver",
+    "blueteath:diamond_blueteath_transceiver",
+    "blueteath:netherite_blueteath_transceiver"
+  ]
+}

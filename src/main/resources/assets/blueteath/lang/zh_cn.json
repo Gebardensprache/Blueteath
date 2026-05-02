@@ -1,5 +1,16 @@
 {
   "itemGroup.blueteath": "蓝芽",
   "item.blueteath.logo": "蓝芽(Logo)",
-  "blueteath.message.disconnected": "蓝芽: 连接已中断"
+  "item.blueteath.transceiver.tier.copper": "铜",
+  "item.blueteath.transceiver.tier.iron": "铁",
+  "item.blueteath.transceiver.tier.golden": "金",
+  "item.blueteath.transceiver.tier.diamond": "钻石",
+  "item.blueteath.transceiver.tier.netherite": "下界合金",
+  "item.blueteath.transceiver.name": "%s蓝芽收发器",
+  "item.blueteath.transceiver.tooltip": "附加最大距离: %s格",
+  "item.blueteath.dimension_blueteath_adapter.tooltip": "允许蓝芽连接到其他维度的玩家",
+  "blueteath.message.disconnected": "蓝芽: 连接已中断",
+  "blueteath.screen.setting": "蓝芽设置",
+  "key.category.blueteath.blueteath_keybinds": "蓝芽",
+  "blueteath.key.open_setting_screen": "打开蓝芽配置界面"
 }

@@ -1,5 +1,6 @@
 package band.kessoku.blueteath;
 
+import band.kessoku.blueteath.client.key.BTKeyMappings;
 import band.kessoku.blueteath.common.BTConfig;
 import band.kessoku.blueteath.common.attachments.BTAttachments;
 import band.kessoku.blueteath.common.items.BTItems;

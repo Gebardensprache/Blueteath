@@ -1,7 +1,13 @@
 package band.kessoku.blueteath.api.utils;
 
 import band.kessoku.blueteath.common.attachments.BTAttachments;
+import band.kessoku.blueteath.common.items.BTItems;
+import band.kessoku.blueteath.common.items.transceiver.Transceiver;
+import band.kessoku.blueteath.common.items.transceiver.TransceiverTier;
+import eu.pb4.trinkets.api.TrinketsApi;
 import net.minecraft.world.entity.player.Player;
+
+import java.util.Comparator;
 
 public final class PlayerUtil {
 
@@ -14,6 +20,47 @@ public final class PlayerUtil {
             }
         }
         return false;
+    }
+
+    public static double calculateDistance(Player f, Player s) {
+        var pos1 = f.getOnPos();
+        var pos2 = s.getOnPos();
+        return distance(
+                pos1.getX(), pos1.getY(), pos1.getZ(),
+                pos2.getX(), pos2.getY(), pos2.getZ()
+        );
+    }
+
+    public static boolean hasTransceiver(Player player) {
+        return TrinketsApi.getAttachment(player).isEquipped(Transceiver.TRANSCEIVERS);
+    }
+
+    public static boolean hasGlasses(Player player) {
+        return TrinketsApi.getAttachment(player).isEquipped(BTItems.BLUETEATH_GLASSES.asItem());
+    }
+
+    public static boolean hasAdapter(Player player) {
+        return TrinketsApi.getAttachment(player).isEquipped(BTItems.DIMENSION_BLUETEATH_ADAPTER.asItem());
+    }
+
+    public static TransceiverTier getTier(Player player) {
+        return TrinketsApi.getAttachment(player).getEquipped(stack -> stack.is(Transceiver.TRANSCEIVERS))
+                .stream()
+                .filter(tuple -> tuple.getB().getItem() instanceof Transceiver)
+                .map(tuple -> (Transceiver) tuple.getB().getItem())
+                .sorted(Comparator.comparing(Transceiver::getTier))
+                .toList().getLast().getTier();
+    }
+
+    private static double distance(
+            double x1, double y1, double z1,
+            double x2, double y2, double z2) {
+
+        double dx = x2 - x1;
+        double dy = y2 - y1;
+        double dz = z2 - z1;
+
+        return Math.hypot(Math.hypot(dx, dy), dz);
     }
 
 }

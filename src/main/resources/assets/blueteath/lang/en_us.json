@@ -1,5 +1,16 @@
 {
   "itemGroup.blueteath": "Blueteath",
   "item.blueteath.logo": "Blueteath Logo",
-  "blueteath.message.disconnected": "Blueteath: Connection lost"
+  "item.blueteath.transceiver.tier.copper": "Copper",
+  "item.blueteath.transceiver.tier.iron": "Iron",
+  "item.blueteath.transceiver.tier.golden": "Golden",
+  "item.blueteath.transceiver.tier.diamond": "Diamond",
+  "item.blueteath.transceiver.tier.netherite": "Netherite",
+  "item.blueteath.transceiver.name": "%s Blueteath Transceiver",
+  "item.blueteath.transceiver.tooltip": "Addition Max Distance: %s blocks",
+  "item.blueteath.dimension_blueteath_adapter.tooltip": "Allow blueteath to connect player in other dimensions",
+  "blueteath.message.disconnected": "Blueteath: Connection lost",
+  "blueteath.screen.setting": "Blueteath Settings",
+  "key.category.blueteath.blueteath_keybinds": "Blueteath Keybinds",
+  "blueteath.key.open_setting_screen": "Open Blueteath Settings"
 }
