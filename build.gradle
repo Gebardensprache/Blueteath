@@ -28,13 +28,14 @@ sourceSets.main.resources {
 
 repositories {
     maven {
-        name = "Nucleoid"
-        url = 'https://maven.nucleoid.xyz/releases'
+        name = "Illusive Soulworks maven"
+        url = "https://maven.theillusivec4.top/"
     }
 }
 
 dependencies {
-    implementation("eu.pb4:trinkets:${trinkets_version}")
+    compileOnly("top.theillusivec4.curios:curios-neoforge:${curios_version}:api")
+    runtimeOnly("top.theillusivec4.curios:curios-neoforge:${curios_version}")
 }
 
 base {

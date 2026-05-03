@@ -1,6 +1,5 @@
 package band.kessoku.blueteath.common.items.transceiver;
 
-import band.kessoku.blueteath.common.BTConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -24,7 +23,7 @@ public enum TransceiverTier {
     }
 
     public int getDistance() {
-        return BTConfig.SERVER_CONFIG.getDistance(this);
+        return this.ordinal();
     }
 
     public Component getTranslation() {

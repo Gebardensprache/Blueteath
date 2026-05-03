@@ -5,11 +5,12 @@ import band.kessoku.blueteath.common.attachments.BTAttachments;
 import band.kessoku.blueteath.common.items.BTItems;
 import band.kessoku.blueteath.common.items.transceiver.Transceiver;
 import band.kessoku.blueteath.common.items.transceiver.TransceiverTier;
-import eu.pb4.trinkets.api.TrinketsApi;
 import net.minecraft.world.entity.player.Player;
 import org.jspecify.annotations.NullMarked;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
-import java.util.Comparator;
+import java.util.function.Function;
 
 @NullMarked
 public final class PlayerUtil {
@@ -48,25 +49,35 @@ public final class PlayerUtil {
     }
 
     public static boolean hasTransceiver(Player player) {
-        return TrinketsApi.getAttachment(player).isEquipped(Transceiver.TRANSCEIVERS);
+        return isEquipped(player, (handler) -> handler.isEquipped(stack -> stack.getItem() instanceof Transceiver));
     }
 
     public static boolean hasGlasses(Player player) {
-        return TrinketsApi.getAttachment(player).isEquipped(BTItems.BLUETEATH_GLASSES.asItem());
+        return isEquipped(player, (handler) -> handler.isEquipped(stack -> stack.is(BTItems.BLUETEATH_GLASSES.asItem())));
     }
 
     public static boolean hasAdapter(Player player) {
-        return TrinketsApi.getAttachment(player).isEquipped(BTItems.DIMENSION_BLUETEATH_ADAPTER.asItem());
+        return isEquipped(player, (handler) -> handler.isEquipped(stack -> stack.is(BTItems.DIMENSION_BLUETEATH_ADAPTER.asItem())));
     }
 
     public static TransceiverTier getTier(Player player) {
         if (!hasTransceiver(player)) return TransceiverTier.NONE;
-        return TrinketsApi.getAttachment(player).getEquipped(stack -> stack.is(Transceiver.TRANSCEIVERS))
-                .stream()
-                .filter(tuple -> tuple.getB().getItem() instanceof Transceiver)
-                .map(tuple -> (Transceiver) tuple.getB().getItem())
-                .sorted(Comparator.comparing(Transceiver::getTier))
-                .toList().getLast().getTier();
+        if (CuriosApi.getCuriosInventory(player).isPresent()) {
+            var handler = CuriosApi.getCuriosInventory(player).get();
+            var optional = handler.findFirstCurio(stack -> stack.getItem() instanceof Transceiver);
+            if (optional.isPresent()) {
+                var result = optional.get();
+                return result.stack().getItem() instanceof Transceiver transceiver ? transceiver.getTier() : TransceiverTier.NONE;
+            }
+        }
+        return TransceiverTier.NONE;
+    }
+
+    private static boolean isEquipped(Player player, Function<ICuriosItemHandler, Boolean> function) {
+        if (CuriosApi.getCuriosInventory(player).isPresent()) {
+            return function.apply(CuriosApi.getCuriosInventory(player).get());
+        }
+        return false;
     }
 
     private static double distance(

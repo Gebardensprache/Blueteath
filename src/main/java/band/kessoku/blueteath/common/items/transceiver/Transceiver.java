@@ -1,17 +1,17 @@
 package band.kessoku.blueteath.common.items.transceiver;
 
 import band.kessoku.blueteath.Blueteath;
-import eu.pb4.trinkets.api.callback.TrinketCallback;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.ItemLore;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 
-public class Transceiver extends Item implements TrinketCallback {
+public class Transceiver extends Item implements ICurioItem {
 
     public static final TagKey<Item> TRANSCEIVERS = TagKey.create(Registries.ITEM, Blueteath.asId("transceivers"));
 
