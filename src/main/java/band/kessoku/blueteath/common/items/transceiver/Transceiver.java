@@ -1,13 +1,15 @@
 package band.kessoku.blueteath.common.items.transceiver;
 
 import band.kessoku.blueteath.Blueteath;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentInitializers;
+import band.kessoku.blueteath.api.data.BlueteathData;
+import band.kessoku.blueteath.common.components.BTDataComponentTypes;
+
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+
 import net.minecraft.world.item.component.ItemLore;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -20,13 +22,15 @@ public class Transceiver extends Item implements ICurioItem {
     private final TransceiverTier tier;
 
     public Transceiver(Properties properties, TransceiverTier tier) {
+
         super(properties
                 .stacksTo(1)
                 .component(DataComponents.LORE,
-                        new ItemLore(List.of(Component.translatable("item.blueteath.transceiver.tooltip", tier.getDistance())))
-                )
+                        new ItemLore(List.of(Component.translatable("item.blueteath.transceiver.tooltip", tier.getDistance()))))
                 .component(DataComponents.ITEM_NAME,
                         Component.translatable("item.blueteath.transceiver.name", tier.getTranslation()))
+                .component(BTDataComponentTypes.BLUETEATH,
+                        new BlueteathData(Blueteath.asId(tier.getRegistryName())))
                 .rarity(tier.getRarity()));
         this.tier = tier;
     }

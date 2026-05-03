@@ -26,14 +26,13 @@ public class BTItems {
     public static final DeferredItem<Item> LOGO =
             ITEMS.registerSimpleItem("logo", () -> new Item.Properties().stacksTo(1));
 
-    public static final DeferredItem<BlueteathGlasses> BLUETEATH_GLASSES =
-            ITEMS.registerItem("blueteath_glasses", BlueteathGlasses::new);
+    public static final DeferredItem<BlueteathGlasses> BLUETEATH_GLASSES = ITEMS.registerItem("blueteath_glasses", BlueteathGlasses::new, p -> p);
 
-    public static final DeferredItem<Transceiver> COPPER = ITEMS.registerItem(TransceiverTier.COPPER.getRegistryName(), TransceiverTier.COPPER::create);
-    public static final DeferredItem<Transceiver> IRON = ITEMS.registerItem(TransceiverTier.IRON.getRegistryName(), TransceiverTier.IRON::create);
-    public static final DeferredItem<Transceiver> GOLDEN = ITEMS.registerItem(TransceiverTier.GOLDEN.getRegistryName(), TransceiverTier.GOLDEN::create);
-    public static final DeferredItem<Transceiver> DIAMOND = ITEMS.registerItem(TransceiverTier.DIAMOND.getRegistryName(), TransceiverTier.DIAMOND::create);
-    public static final DeferredItem<Transceiver> NETHERITE = ITEMS.registerItem(TransceiverTier.NETHERITE.getRegistryName(), TransceiverTier.NETHERITE::create);
+    public static final DeferredItem<Transceiver> COPPER = ITEMS.registerItem(TransceiverTier.COPPER.getRegistryName(), TransceiverTier.COPPER::create, p -> p);
+    public static final DeferredItem<Transceiver> IRON = ITEMS.registerItem(TransceiverTier.IRON.getRegistryName(), TransceiverTier.IRON::create, p -> p);
+    public static final DeferredItem<Transceiver> GOLDEN = ITEMS.registerItem(TransceiverTier.GOLDEN.getRegistryName(), TransceiverTier.GOLDEN::create, p -> p);
+    public static final DeferredItem<Transceiver> DIAMOND = ITEMS.registerItem(TransceiverTier.DIAMOND.getRegistryName(), TransceiverTier.DIAMOND::create, p -> p);
+    public static final DeferredItem<Transceiver> NETHERITE = ITEMS.registerItem(TransceiverTier.NETHERITE.getRegistryName(), TransceiverTier.NETHERITE::create, p -> p);
 
     public static final DeferredItem<Item> DIMENSION_BLUETEATH_ADAPTER =
             ITEMS.registerSimpleItem(
@@ -55,14 +54,12 @@ public class BTItems {
                     .icon(LOGO::toStack)
                     .displayItems((_, output) -> {
                         output.accept(BLUETEATH_GLASSES);
-                        if (!Blueteath.isTeaCon()) {
-                            output.accept(COPPER);
-                            output.accept(IRON);
-                            output.accept(GOLDEN);
-                            output.accept(DIAMOND);
-                            output.accept(NETHERITE);
-                            output.accept(DIMENSION_BLUETEATH_ADAPTER);
-                        }
+                        output.accept(COPPER);
+                        output.accept(IRON);
+                        output.accept(GOLDEN);
+                        output.accept(DIAMOND);
+                        output.accept(NETHERITE);
+                        output.accept(DIMENSION_BLUETEATH_ADAPTER);
                     })
                     .build());
 
