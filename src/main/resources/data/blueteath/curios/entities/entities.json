@@ -1,7 +1,6 @@
 {
   "entities": [
-    "minecraft:player",
-    "minecraft:armor_stand"
+    "minecraft:player"
   ],
   "slots": [
     "back",
@@ -10,7 +9,6 @@
     "bracelet",
     "charm",
     "curio",
-    "example",
     "hands",
     "head",
     "necklace",
