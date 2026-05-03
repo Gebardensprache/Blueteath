@@ -1,7 +1,9 @@
 package band.kessoku.blueteath.common.attachments;
 
+import band.kessoku.blueteath.api.event.PlayerConnectingEvent;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.UUIDUtil;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.IntArrayTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -10,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.util.ValueIOSerializable;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
@@ -70,5 +73,11 @@ public class BlueteathHandler implements ValueIOSerializable {
 
     public Tag decode() {
         return new IntArrayTag(connecting != null ? UUIDUtil.uuidToIntArray(connecting) : new int[0]);
+    }
+
+    public void tick(Player player) {
+        Player target = getConnectedPlayer(player.level());
+        if (target == null) return;
+        NeoForge.EVENT_BUS.post(new PlayerConnectingEvent(player, target));
     }
 }

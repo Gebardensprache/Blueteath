@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = Blueteath.MOD_ID)
 @SuppressWarnings("unused")
@@ -26,6 +27,12 @@ public final class BTEventHandler {
             handler.disconnect(); // Reset blueteath connect
             event.getEntity().setData(BTAttachments.BLUETEATH_HANDLER, handler);
         }
+    }
+
+    @SubscribeEvent
+    public static void playerTick(PlayerTickEvent.Post event) {
+        event.getEntity().getExistingData(BTAttachments.BLUETEATH_HANDLER)
+                .ifPresent(handler -> handler.tick(event.getEntity()));
     }
 
 }
