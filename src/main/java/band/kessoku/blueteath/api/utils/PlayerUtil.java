@@ -3,7 +3,7 @@ package band.kessoku.blueteath.api.utils;
 import band.kessoku.blueteath.common.BTConfig;
 import band.kessoku.blueteath.common.attachments.BTAttachments;
 import band.kessoku.blueteath.common.items.BTItems;
-import band.kessoku.blueteath.common.items.transceiver.Transceiver;
+import band.kessoku.blueteath.common.items.transceiver.TransceiverItem;
 import band.kessoku.blueteath.common.items.transceiver.TransceiverTier;
 import net.minecraft.world.entity.player.Player;
 import org.jspecify.annotations.NullMarked;
@@ -49,7 +49,7 @@ public final class PlayerUtil {
     }
 
     public static boolean hasTransceiver(Player player) {
-        return isEquipped(player, (handler) -> handler.isEquipped(stack -> stack.getItem() instanceof Transceiver));
+        return isEquipped(player, (handler) -> handler.isEquipped(stack -> stack.getItem() instanceof TransceiverItem));
     }
 
     public static boolean hasGlasses(Player player) {
@@ -64,10 +64,10 @@ public final class PlayerUtil {
         if (!hasTransceiver(player)) return TransceiverTier.NONE;
         if (CuriosApi.getCuriosInventory(player).isPresent()) {
             var handler = CuriosApi.getCuriosInventory(player).get();
-            var optional = handler.findFirstCurio(stack -> stack.getItem() instanceof Transceiver);
+            var optional = handler.findFirstCurio(stack -> stack.getItem() instanceof TransceiverItem);
             if (optional.isPresent()) {
                 var result = optional.get();
-                return result.stack().getItem() instanceof Transceiver transceiver ? transceiver.getTier() : TransceiverTier.NONE;
+                return result.stack().getItem() instanceof TransceiverItem transceiver ? transceiver.getTier() : TransceiverTier.NONE;
             }
         }
         return TransceiverTier.NONE;

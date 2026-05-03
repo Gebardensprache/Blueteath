@@ -1,9 +1,10 @@
 package band.kessoku.blueteath.common.items;
 
 import band.kessoku.blueteath.Blueteath;
-import band.kessoku.blueteath.common.items.transceiver.Transceiver;
+import band.kessoku.blueteath.common.items.transceiver.TransceiverItem;
 import band.kessoku.blueteath.common.items.transceiver.TransceiverTier;
 import band.kessoku.blueteath.common.items.trinkets.BlueteathGlasses;
+import band.kessoku.blueteath.common.module.DimensionBlueteathAdapter;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -28,17 +29,17 @@ public class BTItems {
 
     public static final DeferredItem<BlueteathGlasses> BLUETEATH_GLASSES = ITEMS.registerItem("blueteath_glasses", BlueteathGlasses::new, p -> p);
 
-    public static final DeferredItem<Transceiver> COPPER = ITEMS.registerItem(TransceiverTier.COPPER.getRegistryName(), TransceiverTier.COPPER::create, p -> p);
-    public static final DeferredItem<Transceiver> IRON = ITEMS.registerItem(TransceiverTier.IRON.getRegistryName(), TransceiverTier.IRON::create, p -> p);
-    public static final DeferredItem<Transceiver> GOLDEN = ITEMS.registerItem(TransceiverTier.GOLDEN.getRegistryName(), TransceiverTier.GOLDEN::create, p -> p);
-    public static final DeferredItem<Transceiver> DIAMOND = ITEMS.registerItem(TransceiverTier.DIAMOND.getRegistryName(), TransceiverTier.DIAMOND::create, p -> p);
-    public static final DeferredItem<Transceiver> NETHERITE = ITEMS.registerItem(TransceiverTier.NETHERITE.getRegistryName(), TransceiverTier.NETHERITE::create, p -> p);
+    public static final DeferredItem<TransceiverItem> COPPER = ITEMS.registerItem(TransceiverTier.COPPER.getRegistryName(), TransceiverTier.COPPER::create, p -> p);
+    public static final DeferredItem<TransceiverItem> IRON = ITEMS.registerItem(TransceiverTier.IRON.getRegistryName(), TransceiverTier.IRON::create, p -> p);
+    public static final DeferredItem<TransceiverItem> GOLDEN = ITEMS.registerItem(TransceiverTier.GOLDEN.getRegistryName(), TransceiverTier.GOLDEN::create, p -> p);
+    public static final DeferredItem<TransceiverItem> DIAMOND = ITEMS.registerItem(TransceiverTier.DIAMOND.getRegistryName(), TransceiverTier.DIAMOND::create, p -> p);
+    public static final DeferredItem<TransceiverItem> NETHERITE = ITEMS.registerItem(TransceiverTier.NETHERITE.getRegistryName(), TransceiverTier.NETHERITE::create, p -> p);
 
     public static final DeferredItem<Item> DIMENSION_BLUETEATH_ADAPTER =
-            ITEMS.registerSimpleItem(
+            ITEMS.registerItem(
                     "dimension_blueteath_adapter",
-                    () -> new Item.Properties()
-                            .stacksTo(1)
+                    DimensionBlueteathAdapter::new,
+                    p -> p.stacksTo(1)
                             .rarity(Rarity.EPIC)
                             .component(DataComponents.LORE, new ItemLore(
                                     List.of(Component.translatable("item.blueteath.dimension_blueteath_adapter.tooltip")))

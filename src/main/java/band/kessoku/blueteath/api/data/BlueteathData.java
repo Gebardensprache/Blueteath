@@ -23,7 +23,8 @@ public class BlueteathData {
                     Identifier.CODEC.fieldOf("id").orElse(Blueteath.asId("empty")).forGetter(BlueteathData::getId),
                     Codec.BOOL.fieldOf("isActive").orElse(false).forGetter(BlueteathData::isActive),
                     UUIDUtil.CODEC.fieldOf("connectingObject").orElse(EMPTY).forGetter(BlueteathData::getConnectingObject),
-                    BlueteathModuleData.CODEC.listOf().fieldOf("modules").orElse(new ArrayList<>()).forGetter(BlueteathData::getModules)
+                    BlueteathModuleData.CODEC.listOf().fieldOf("modules").orElse(new ArrayList<>()).forGetter(BlueteathData::getModules),
+                    Codec.INT.fieldOf("maxModuleAmount").orElse(4).forGetter(BlueteathData::getMaxModuleAmount)
             ).apply(instance, BlueteathData::new)
     );
 
@@ -32,6 +33,7 @@ public class BlueteathData {
             ByteBufCodecs.BOOL, BlueteathData::isActive,
             UUIDUtil.STREAM_CODEC, BlueteathData::getConnectingObject,
             ByteBufCodecs.fromCodec(BlueteathModuleData.CODEC.listOf()), BlueteathData::getModules,
+            ByteBufCodecs.INT, BlueteathData::getMaxModuleAmount,
             BlueteathData::new
     );
 
@@ -39,16 +41,18 @@ public class BlueteathData {
     private boolean isActive;
     private UUID connectingObject;
     private List<BlueteathModuleData> modules;
+    private int maxModuleAmount;
 
-    public BlueteathData(Identifier id, boolean isActive, UUID connectingObject, List<BlueteathModuleData> modules) {
+    public BlueteathData(Identifier id, boolean isActive, UUID connectingObject, List<BlueteathModuleData> modules, int maxModuleAmount) {
         this.id = id;
         this.isActive = isActive;
         this.connectingObject = connectingObject;
         this.modules = modules;
+        this.maxModuleAmount = maxModuleAmount;
     }
 
-    public BlueteathData(Identifier id) {
-        this(id, false, EMPTY, new ArrayList<>());
+    public BlueteathData(Identifier id, int maxModuleAmount) {
+        this(id, false, EMPTY, new ArrayList<>(), maxModuleAmount);
     }
 
     public Identifier getId() {
@@ -75,6 +79,10 @@ public class BlueteathData {
         return modules;
     }
 
+    public int getMaxModuleAmount() {
+        return maxModuleAmount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -94,6 +102,7 @@ public class BlueteathData {
                 ", isActive=" + isActive +
                 ", connectingObject=" + connectingObject +
                 ", modules=" + modules +
+                ", maxModuleAmount=" + maxModuleAmount +
                 '}';
     }
 }
