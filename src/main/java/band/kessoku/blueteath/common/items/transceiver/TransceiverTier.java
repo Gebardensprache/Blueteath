@@ -1,29 +1,34 @@
 package band.kessoku.blueteath.common.items.transceiver;
 
+import band.kessoku.blueteath.common.BTConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
 public enum TransceiverTier {
-    NONE(Rarity.COMMON),
-    COPPER(Rarity.COMMON),
-    IRON(Rarity.COMMON),
-    GOLDEN(Rarity.UNCOMMON),
-    DIAMOND(Rarity.RARE),
-    NETHERITE(Rarity.EPIC);
+    NONE(Rarity.COMMON, 1),
+    COPPER(Rarity.COMMON, 2),
+    IRON(Rarity.COMMON, 4),
+    GOLDEN(Rarity.UNCOMMON, 8),
+    DIAMOND(Rarity.RARE, 16),
+    NETHERITE(Rarity.EPIC, 32);
 
     private final Rarity rarity;
+    private final int distance;
 
-    TransceiverTier(Rarity rarity) {
+    TransceiverTier(Rarity rarity, int distance) {
         this.rarity = rarity;
+        this.distance = distance;
     }
 
     public Rarity getRarity() {
-        return rarity;
+        return this.rarity;
     }
 
     public int getDistance() {
-        return this.ordinal();
+        if (BTConfig.SERVER_CONFIG_SPEC.isLoaded())
+            return BTConfig.SERVER_CONFIG.getDistance(this);
+        return this.distance;
     }
 
     public Component getTranslation() {
