@@ -55,12 +55,14 @@ public class BTItems {
                     .icon(LOGO::toStack)
                     .displayItems((_, output) -> {
                         output.accept(BLUETEATH_GLASSES);
-                        output.accept(COPPER);
-                        output.accept(IRON);
-                        output.accept(GOLDEN);
-                        output.accept(DIAMOND);
-                        output.accept(NETHERITE);
-                        output.accept(DIMENSION_BLUETEATH_ADAPTER);
+                        if (!Blueteath.isTeaCon()) {
+                            output.accept(COPPER);
+                            output.accept(IRON);
+                            output.accept(GOLDEN);
+                            output.accept(DIAMOND);
+                            output.accept(NETHERITE);
+                            output.accept(DIMENSION_BLUETEATH_ADAPTER);
+                        }
                     })
                     .build());
 

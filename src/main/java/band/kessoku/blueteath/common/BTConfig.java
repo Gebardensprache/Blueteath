@@ -1,5 +1,6 @@
 package band.kessoku.blueteath.common;
 
+import band.kessoku.blueteath.Blueteath;
 import band.kessoku.blueteath.common.items.transceiver.TransceiverTier;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
@@ -46,7 +47,7 @@ public class BTConfig {
 
         public Server(ModConfigSpec.Builder builder) {
             defaultDistance = builder.comment("Default distance of Blueteath connection.", "Exceeding the distance will disconnection.", "Set to 0 to disable distance limit.")
-                    .defineInRange("default_distance", 100, 0, Integer.MAX_VALUE);
+                    .defineInRange("default_distance", Blueteath.isTeaCon() ? 0 : 100, 0, Integer.MAX_VALUE);
 
             builder.comment("Distance multiple of each tier transceiver.");
             copperTransceiverDistanceMultiple = builder.defineInRange("copper_transceiver_distance_multiple", 2, 1, 256);
@@ -58,6 +59,7 @@ public class BTConfig {
 
         public int getDistance(TransceiverTier tier) {
             return defaultDistance.get() * switch (tier) {
+                case NONE -> 1;
                 case COPPER -> copperTransceiverDistanceMultiple.get();
                 case IRON -> ironTransceiverDistanceMultiple.get();
                 case GOLDEN -> goldenTransceiverDistanceMultiple.get();

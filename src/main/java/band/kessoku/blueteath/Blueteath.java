@@ -36,4 +36,9 @@ public class Blueteath {
         return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 
+    @SuppressWarnings("ConstantValue")
+    public static boolean isTeaCon() {
+        return MOD_VERSION.endsWith("-teacon");
+    }
+
 }

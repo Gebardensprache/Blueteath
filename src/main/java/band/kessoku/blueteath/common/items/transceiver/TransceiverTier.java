@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Rarity;
 
 public enum TransceiverTier {
+    NONE(Rarity.COMMON),
     COPPER(Rarity.COMMON),
     IRON(Rarity.COMMON),
     GOLDEN(Rarity.UNCOMMON),
@@ -35,5 +36,9 @@ public enum TransceiverTier {
 
     public Transceiver create() {
         return new Transceiver(this);
+    }
+
+    public boolean isNone() {
+        return this == NONE;
     }
 }
