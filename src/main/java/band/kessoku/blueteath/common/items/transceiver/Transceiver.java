@@ -17,8 +17,8 @@ public class Transceiver extends Item implements TrinketCallback {
 
     private final TransceiverTier tier;
 
-    public Transceiver(TransceiverTier tier) {
-        super(new Properties()
+    public Transceiver(Properties properties, TransceiverTier tier) {
+        super(properties
                 .stacksTo(1)
                 .component(DataComponents.LORE,
                         new ItemLore(List.of(Component.translatable("item.blueteath.transceiver.tooltip", tier.getDistance())))

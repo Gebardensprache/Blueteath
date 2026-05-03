@@ -24,12 +24,13 @@ public class Blueteath {
 
     public Blueteath(IEventBus bus, ModContainer container, Dist dist) {
         LOGGER.info("Blueteath v{} is connecting to your {}...", MOD_VERSION, dist.isClient() ? "client" : "server");
-        BTAttachments.register(bus);
-        BTItems.register(bus);
 
         container.registerConfig(ModConfig.Type.SERVER, BTConfig.SERVER_CONFIG_SPEC);
         container.registerConfig(ModConfig.Type.CLIENT, BTConfig.CLIENT_CONFIG_SPEC);
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+
+        BTAttachments.register(bus);
+        BTItems.register(bus);
     }
 
     public static Identifier asId(String path) {
