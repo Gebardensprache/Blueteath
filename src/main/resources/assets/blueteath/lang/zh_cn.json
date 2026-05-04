@@ -12,5 +12,14 @@
   "blueteath.message.disconnected": "蓝芽: 连接已中断",
   "blueteath.screen.setting": "蓝芽设置",
   "key.category.blueteath.blueteath_keybinds": "蓝芽",
-  "blueteath.key.open_setting_screen": "打开蓝芽配置界面"
+  "blueteath.key.open_setting_screen": "打开蓝芽配置界面",
+  "blueteath.configuration.display_connecting_player": "显示连接中的玩家",
+  "blueteath.configuration.display_connecting_player.tooltip": "在主HUD中显示玩家头像和名称。",
+  "blueteath.configuration.default_distance": "默认距离",
+  "blueteath.configuration.default_distance.tooltip": "默认蓝牙连接距离。\n超过该距离将断开连接。\n设置为 0 禁用距离限制。",
+  "blueteath.configuration.copper_transceiver_distance_multiple": "铜蓝芽收发器距离",
+  "blueteath.configuration.iron_transceiver_distance_multiple": "铁蓝芽收发器距离",
+  "blueteath.configuration.golden_transceiver_distance_multiple": "金蓝芽收发器距离 ",
+  "blueteath.configuration.diamond_transceiver_distance_multiple": "钻石蓝芽收发器距离",
+  "blueteath.configuration.netherite_transceiver_distance_multiple": "下界合金蓝芽收发器距离"
 }
