@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemLore;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -26,8 +27,6 @@ public class TransceiverItem extends BlueteathItem implements ICurioItem {
         super(properties
                 .component(DataComponents.LORE,
                         new ItemLore(List.of(Component.translatable("item.blueteath.transceiver.tooltip", tier.getDistance()))))
-                .component(DataComponents.ITEM_NAME,
-                        Component.translatable("item.blueteath.transceiver.name", tier.getTranslation()))
                 .component(BTDataComponentTypes.BLUETEATH,
                         new BlueteathData(Blueteath.asId(tier.getRegistryName()), tier.getMaxModuleAmount()))
                 .rarity(tier.getRarity()));
@@ -36,5 +35,10 @@ public class TransceiverItem extends BlueteathItem implements ICurioItem {
 
     public TransceiverTier getTier() {
         return tier;
+    }
+
+    @Override
+    public Component getName(ItemStack itemStack) {
+        return Component.translatable("item.blueteath.transceiver.name", tier.getTranslation());
     }
 }
