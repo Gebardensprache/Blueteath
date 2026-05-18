@@ -23,7 +23,7 @@ public abstract class MinecraftMixin {
             method = "shouldEntityAppearGlowing",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;isCurrentlyGlowing()Z")
     )
-    private boolean blueteach$glowingConnectingPlayer(boolean original, @Local(argsOnly = true, name = "entity") Entity entity) {
+    private boolean blueteach$glowingConnectingPlayer(boolean original, @Local(argsOnly = true) Entity entity) {
         if (entity instanceof Player target && player != null) {
             return original || (PlayerUtil.isConnecting(player, target) && PlayerUtil.hasGlasses(player));
         }
