@@ -12,14 +12,5 @@
   "blueteath.message.disconnected": "Blueteath: Connection lost",
   "blueteath.screen.setting": "Blueteath Settings",
   "key.category.blueteath.blueteath_keybinds": "Blueteath Keybinds",
-  "blueteath.key.open_setting_screen": "Open Blueteath Settings",
-  "blueteath.configuration.display_connecting_player": "Display connecting player",
-  "blueteath.configuration.display_connecting_player.tooltip": "Render name and player head icon into main HUD.",
-  "blueteath.configuration.default_distance": "Default distance",
-  "blueteath.configuration.default_distance.tooltip": "Default distance of Blueteath connection.\nExceeding the distance will disconnection.\nSet to 0 to disable distance limit.",
-  "blueteath.configuration.copper_transceiver_distance_multiple": "Copper transceiver distance multiple",
-  "blueteath.configuration.iron_transceiver_distance_multiple": "Iron transceiver distance multiple",
-  "blueteath.configuration.golden_transceiver_distance_multiple": "Golden transceiver distance multiple",
-  "blueteath.configuration.diamond_transceiver_distance_multiple": "Diamond transceiver distance multiple",
-  "blueteath.configuration.netherite_transceiver_distance_multiple": "Netherite transceiver distance multiple"
+  "blueteath.key.open_setting_screen": "Open Blueteath Settings"
 }
