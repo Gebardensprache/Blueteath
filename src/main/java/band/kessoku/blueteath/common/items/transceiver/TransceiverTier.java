@@ -6,29 +6,23 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
 public enum TransceiverTier {
-    NONE(Rarity.COMMON, 1, 0),
-    COPPER(Rarity.COMMON, 2, 1),
-    IRON(Rarity.COMMON, 4, 2),
-    GOLDEN(Rarity.UNCOMMON, 8, 3),
-    DIAMOND(Rarity.RARE, 16, 4),
-    NETHERITE(Rarity.EPIC, 32, 5);
+    NONE(Rarity.COMMON, 1),
+    COPPER(Rarity.COMMON, 2),
+    IRON(Rarity.COMMON, 4),
+    GOLDEN(Rarity.UNCOMMON, 8),
+    DIAMOND(Rarity.RARE, 16),
+    NETHERITE(Rarity.EPIC, 32);
 
     private final Rarity rarity;
     private final int distance;
-    private final int maxModuleAmount;
 
-    TransceiverTier(Rarity rarity, int distance, int maxModuleAmount) {
+    TransceiverTier(Rarity rarity, int distance) {
         this.rarity = rarity;
         this.distance = distance;
-        this.maxModuleAmount = maxModuleAmount;
     }
 
     public Rarity getRarity() {
         return this.rarity;
-    }
-
-    public int getMaxModuleAmount() {
-        return maxModuleAmount;
     }
 
     public int getDistance() {
@@ -45,8 +39,8 @@ public enum TransceiverTier {
         return this.name().toLowerCase() + "_blueteath_transceiver";
     }
 
-    public TransceiverItem create(Item.Properties properties) {
-        return new TransceiverItem(properties, this);
+    public Transceiver create(Item.Properties properties) {
+        return new Transceiver(properties, this);
     }
 
     public boolean isNone() {

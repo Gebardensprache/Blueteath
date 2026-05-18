@@ -4,6 +4,7 @@ import band.kessoku.blueteath.api.data.BlueteathData;
 import band.kessoku.blueteath.api.data.BlueteathModuleData;
 import band.kessoku.blueteath.client.menu.BlueteathMenu;
 import band.kessoku.blueteath.common.components.BTDataComponentTypes;
+import eu.pb4.trinkets.api.callback.TrinketCallback;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -19,11 +20,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jspecify.annotations.Nullable;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.Optional;
 
-public class BlueteathItem extends Item implements ICurioItem {
+public class BlueteathItem extends Item implements TrinketCallback {
     public BlueteathItem(Properties properties) {
         super(properties.stacksTo(1));
     }
