@@ -6,7 +6,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemLore;
+import org.jspecify.annotations.NonNull;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
@@ -23,13 +25,16 @@ public class Transceiver extends Item implements ICurioItem {
                 .component(DataComponents.LORE,
                         new ItemLore(List.of(Component.translatable("item.blueteath.transceiver.tooltip", tier.getDistance())))
                 )
-                .component(DataComponents.ITEM_NAME,
-                        Component.translatable("item.blueteath.transceiver.name", tier.getTranslation()))
                 .rarity(tier.getRarity()));
         this.tier = tier;
     }
 
     public TransceiverTier getTier() {
         return tier;
+    }
+
+    @Override
+    public @NonNull Component getName(@NonNull ItemStack itemStack) {
+        return Component.translatable("item.blueteath.transceiver.name", tier.getTranslation());
     }
 }
