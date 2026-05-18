@@ -1,8 +1,6 @@
 package band.kessoku.blueteath.common.items.transceiver;
 
 import band.kessoku.blueteath.Blueteath;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentInitializers;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
